@@ -18,6 +18,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Build Environment
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,6 +45,18 @@ jobs:
             }
           };
           EOF
+          
+      - name: Verify config.js was generated
+        run: |
+          if [ ! -f scripts/config.js ]; then
+            echo "ERROR: config.js was not generated!"
+            exit 1
+          fi
+          if ! grep -q "projectId" scripts/config.js; then
+            echo "ERROR: config.js appears to be missing projectId"
+            exit 1
+          fi
+          echo "✓ config.js generated successfully"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
