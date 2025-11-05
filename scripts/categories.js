@@ -74,7 +74,7 @@ async function getCategories(){
 
                 categoryElm.addEventListener("click", () => {
                     console.log(category['title'])
-                    window.location.replace("/products.html?" + category['title'])
+                    window.location.replace("products.html?" + category['title'])
                 })
 
             }
