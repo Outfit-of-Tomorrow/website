@@ -4,6 +4,12 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase
 import { getFirestore, getDocs, orderBy, getDoc, doc , query, where, collection, addDoc, setDoc, deleteDoc} from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js'
 import { CONFIG } from './config.js';
 
+// Validate config is loaded
+if (!CONFIG || !CONFIG.firebase || !CONFIG.firebase.projectId) {
+    console.error('Firebase configuration is missing or incomplete. Please ensure config.js is properly generated.');
+    throw new Error('Firebase configuration is missing. Check that GitHub Secrets are configured and config.js is generated during deployment.');
+}
+
 const firebaseConfig = CONFIG.firebase;
 
 // Initialize Firebase
