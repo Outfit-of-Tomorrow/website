@@ -1,0 +1,202 @@
+/*  --- Styles for Individual Blog Post Page --- */
+
+/* Post Container */
+.post{
+    width: 90%;
+    margin-left: 5%;
+    min-height: calc(100vh - 380px);
+}
+
+/* Post Styles */
+.postTitle{
+    font-size: clamp( 50px, 4vw , 80px);
+    margin-top: 80px;
+    font-family: 'Noto Serif Telugu', serif;
+    text-align: center;
+}
+
+.post_img {
+    margin-inline: auto;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0px 0px 5px 5px rgba(40,105,69,0.1);
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 100%;
+}
+
+.postDescription{
+    font-size: clamp( 20px, 1.2vw , 60px);
+    letter-spacing: 0.1mm;
+    line-height: 1.8;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* Style for block of text withing post */
+.blockElm{
+    margin-top: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1mm;
+    line-height: 1.8;
+    margin-bottom: 20px;
+
+}
+
+h4.blockElm{
+    margin-top: 60px;
+    font-size: 24px;
+}
+
+h4 + div.blockElm{
+    margin-top: 0px;
+}
+
+/* Add fade in animation */
+.blockElm, .post_img, .product, .postTitle, .postDescription, .seperator{
+    filter: blur(5);
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.6s;
+}
+
+.post_img{
+    transform: translate(-50%, -10px);
+}
+
+.seperator{
+    transition-delay: 0.3s;
+}
+
+/* Change margin for list elements in paragraphs */
+.blockElm.list{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Link Color */
+.blockElm a{
+    color: var(--green);
+}
+
+/* Default Styles for text types */
+.underline{
+    text-decoration: underline;
+}
+
+.em{
+    font-style: italic;
+}
+
+.strong{
+    font-weight: bold;
+}
+
+.strike-through{
+    text-decoration: line-through;
+}
+
+/* Styles for products shown Withing Blog Posts */
+.product{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.product img{
+    width: 40%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0px 0px 5px 5px rgba(40,105,69,0.1);
+}
+
+.product .product_info{
+    margin-left: 6%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.2mm;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.product a{
+    color: var(--green);
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    
+}
+
+.product_info .name{
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.product_info .price{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(0,0,0,0.8);
+}
+
+.product_info .url{
+    display: none;
+}
+
+
+
+/* Used to fade in content when visible  */
+.show{
+    filter: blur(0);
+    transform: translate(0);
+    opacity: 1;
+}
+
+.post_img.show{
+    transform: translate(-50%,0)
+}
+
+/* Media queries for responsiveness  */
+@media (max-width: 1200px) {
+    .post{
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .product{
+        flex-direction: column;
+
+    }
+
+    .product img{
+        width: 100%;
+        height: auto;
+        max-height: 60vh;
+    }
+
+    .product .product_info{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    .product .product_info .title{
+        font-size: 40px;
+    }
+}
+

@@ -1,0 +1,1128 @@
+/* --- Style for design desk page --- */
+
+/* Import Modal Styles */
+@import url('modal.css');
+
+/* Import Spinner Styles */
+@import url('loader.css');
+
+
+html, body{
+    overflow: hidden;
+}
+
+
+/* Desk Grid Background */
+.desk{
+    height: 100vh;
+    width: 100vw;
+    background-image: radial-gradient(
+        rgba(0,0,0,0.3) 6%,
+        transparent 0%
+    );
+    background-position: 0% 0%;
+    background-size: 3vmin 3vmin; 
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    opacity: 1;
+    z-index: -1;
+    transition: opacity 800ms ease, background-size 800ms ease, background-position 800ms ease;
+}
+
+/* Container For Content On Grid*/
+.deskContent{
+    margin-top: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(0,0,0,0.5);
+    height: 100vh - 300px; /* Fallback for browsers that do not support Custom Properties */
+    height: calc((var(--vh, 1vh) * 100) - 230px);
+    position: relative;
+}
+
+/* Design Desk Title */
+.deskContent .title{
+    text-align: center;
+    font-size:35px;
+    margin: 40px;
+    width: 95%;
+    margin-inline: 2.5%;
+    color: rgba(0,0,0,0.7);
+}
+
+/* Description Text on Desk */
+.deskContent .description{
+    text-align: center;
+    line-height: 2;
+    margin-bottom: 40px;
+    transition-delay: 0.3s;
+}
+
+.title, .description, .add{
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: 1s;
+}
+
+
+/* Add Item Button */
+.add{
+    margin-bottom: 40px;
+    font-size: 30px;
+    color: rgba(0,0,0,0.7);
+    position: relative;
+    transition-delay: 0.6s;
+}
+
+.add::after{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 2px;
+    background: rgba(40,105,69,0.7);
+    left: 42.5%;
+    top: calc(100% + 10px);
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+.add:hover::after{
+    width: 170px;
+}
+
+.add:hover{
+    cursor: pointer;
+}
+
+
+.add i{
+    font-size: 23px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    transition: 0.3s;
+}
+
+.add:hover i{
+    transform: rotate(90deg);
+}
+
+
+/* Floating Buttons */
+
+.buttons{
+    position: fixed;
+    /* 100vh - 180px /2 */
+    left: 10px;
+    bottom: calc((100vh - 180px)/2);
+    transform: translateY(50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 90;
+}
+
+.buttonContainer{
+    width: 400px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button{
+    background: rgb(208,214,212);
+    border-radius: 5px;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: rgb(40,105,69);
+    border: 2px solid rgba(40,105,69,0.1);
+    margin: 15px;
+    overflow: hidden;
+    position: relative;
+
+    transform: translateX(-100%);
+    transition: transform 1s, opacity 1s, filter 1s;
+    transition: 1s;
+
+    opacity: 0;
+    filter: blur(2px);
+
+}
+
+.buttonTooltip{
+    position: absolute;
+    font-size: 18px;
+    left: 140px ;
+    color: rgb(0,0,0,0.8);
+    /* background: rgba(255,255,255,0.8);
+    border: 1px solid rgb(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 5px;; */
+}
+
+.button:nth-child(2){
+    transition-delay: 0.1s;
+}
+.button:nth-child(3){
+    transition-delay: 0.2s;
+}
+.button:nth-child(4){
+    transition-delay: 0.3s;
+}
+.button:nth-child(5){
+    transition-delay: 0.4s;
+}
+
+.button i{
+    transition: 0.5s;
+}
+
+.button span{
+    position: absolute;
+    font-size: 12px;
+    bottom: -13px;
+    transition: 0.5s;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+/* On button hover show button desctiption */
+.button:hover span{
+    bottom: 5px;
+}
+
+.button:hover i{
+    transform: translateY(-10px);
+}
+
+
+/* If hover is not available position descriptions under each button by default */
+@media (hover:none) {
+    .button span{
+        bottom: 5px;
+    }
+    .button i{
+        transform: translateY(-10px);
+    }
+}
+
+/* Right Sidebar With Items In Design */
+
+.itemsSidebar{
+    position: absolute;
+    right: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 435px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.itemsSidebar .item{
+    height: 75px;
+    background: red;
+    margin-top: 15px;
+    margin-bottom: 15px;;
+    background: rgb(208,214,212);
+    /* border-radius: 5px; */
+    color: rgb(40,105,69);
+    border: 2px solid rgba(40,105,69,0.1);
+    border-right: 2px solid rgb(40,105,69);
+    display: grid;
+    grid-template-columns: 85px 1fr 0.5fr;
+}
+
+.itemsSidebar .item .img{
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.itemsSidebar .item .img img{
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.itemsSidebar .item .arrow{
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemsSidebar .item .text{
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: center;
+}
+
+.itemsSidebar .item .text .name{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.itemsSidebar .item .text .price{
+    font-size: 14px;
+}
+
+
+@media (orientation: portrait) {
+
+    .buttons{
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: row; 
+    }
+    .button{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 75px;
+        font-size: 30px;
+        margin-inline: 5px;
+        transform: translateX(-10%);
+    
+    }
+
+
+}
+
+@media (max-width: 820px ){
+    .nav{
+        grid-template-rows: 20px 50px !important;
+    }
+
+    .logo.base{
+        display: none !important;
+    }
+
+    .navContainer{
+        height: 70px !important;
+        display: none !important;
+    }
+    .deskContent{
+        margin-top: 75px;
+        height: calc(100vh - 75px);
+        height: calc((var(--vh, 1vh) * 100) - 75px);
+        justify-content: flex-start;
+    }
+    .deskContent .add{
+        /* display: none; */
+    }
+    .desk{
+        background-size: 5vmin 5vmin;
+    }
+
+    
+}
+
+@media (hover:none){
+    .deskContent .add{
+        /* display: none; */
+    }
+}
+
+
+/* Default For Fade in animation */
+.show{
+    filter: blur(0);
+    transform: translate(0px);
+    opacity: 1;
+}
+
+
+
+/* --- Add Modal Styles --- */
+
+/* Wraps product modal to stop overflow */
+.overflow_container{
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Wraps categories and products */
+.product_modal{
+    width: 200%;
+    background: orange;
+    transition: 1s;
+}
+
+/* List of categories */
+.categories{
+    width: calc(50% - 1.5vw);
+    float: left;
+    overflow-Y: scroll;
+    overflow-x: hidden;
+    max-height: 100vh - 300px; /* Fallback for browsers that do not support Custom Properties */
+    max-height: calc((var(--vh, 1vh) * 100) - 230px);
+    margin-right: 1.5vw;
+}
+
+/* Products section, wraps topBar and container */
+.products{
+    width: 50%;
+    float: left;
+}
+
+/* Products Container within products */
+.products .container{
+    max-height: 100vh - 300px; /* Fallback for browsers that do not support Custom Properties */
+    max-height: calc((var(--vh, 1vh) * 100) - 305px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
+
+@media (max-width: 900px) {
+    .products .container{
+        grid-template-columns: 1fr 1fr ;
+    }
+}
+
+@media (max-width: 600px) {
+    .products .container{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Style for category */
+.category{
+    width: 93%;
+    margin-left: 3%;
+    height: 60px;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+    font-size: 18px;
+    background: rgba(210,210,210,0.5);
+    background: rgb(231,229,231);
+
+    background: rgb(235,224,230);
+    /* background: linear-gradient(64deg, rgba(235,224,230,0.9444152661064426) 0%, rgba(228,222,226,1) 100%); */
+    background: transparent;
+    /* border: 1px solid rgba(0,0,0,0.1); */
+    margin-bottom: 5px;
+    border-left: 2px solid rgba(40,105,69,0.5);
+}
+
+.category .image_container{
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: red;
+}
+
+.category img{
+    height: 55px;
+    width: 55px;
+    object-fit: cover;
+    margin-left: 10px;
+    /* border: 1px solid rgba(0,0,0,0.3); */
+}
+
+.category:nth-child(1){
+    margin-top: 0px;
+}
+
+.category_title{
+    margin-left: 20px;
+    float: left;
+}
+
+.category .arrow{
+    position: absolute;
+    right: 15px;
+    color: rgba(0,0,0,0.6);
+}
+
+.category:hover .arrow{
+    color: rgba(0,0,0,0.8);
+}
+
+/* Product Img */
+.products img{
+    height: 300px;
+    margin: 15px;
+    float: left;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0px 0px 5px 5px rgba(40,105,69,0.1);
+    background: rgba(255,255,255,1);
+    transition: 0.5s;
+}
+
+.products img:hover{
+    cursor: pointer;
+    border: 1px solid rgba(40,105,69,0.3);
+}
+
+/* Slide from categories to products */
+.product_modal.active{
+    transform: translate(-50%);
+}
+
+/* Header of products section within add modal */
+.topBar{
+    width: calc(100% - 2px);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 0px;
+
+    margin-bottom: 20px;
+    font-size: clamp(18px, 1.5vw, 24px);
+
+    /* background: rgba(200,200,200,0.5); */
+    /* border: 1px solid rgba(0,0,0,0.1); */
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.topBar i{
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+}
+
+
+
+/* Scrollbar Re-styling  */
+
+.category:hover{
+    cursor: pointer;
+    background: rgba(200,200,200,0.7)
+}
+
+.topBar:hover{
+    cursor: pointer;
+    background: rgba(200,200,200,0.3);
+}
+
+
+.categories::-webkit-scrollbar , .products .container::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+}
+
+
+.categories::-webkit-scrollbar-track ,.products .container::-webkit-scrollbar-track{
+    background-color: rgb(0,0,0,0.1);        /* color of the tracking area */
+}
+
+.categories::-webkit-scrollbar-thumb , .products .container::-webkit-scrollbar-thumb {
+    background-color: rgba(40,105,69,0.5);    /* color of the scroll thumb */  
+}
+
+.modal{
+    overflow: hidden;
+}
+
+
+
+/* Desk Images */
+
+.deskImages{
+    display: none;
+    width: 100%;
+    height: 100%;
+    /* justify-content: center;
+    align-items: center; */
+}
+.deskImages.active{
+    /* display: flex; */
+    display: block;
+}
+.desk_img{
+    max-height: 400px;
+    max-width: 90vw;
+    z-index: 1;
+
+    /* Png Image Border */
+    /* Not supported in IE */
+    --color: rgba(0,0,0,0.1);
+    --size: 2px;
+    --neg : -2px;
+    -webkit-filter: drop-shadow(var(--size) var(--size) 0 var(--color))
+    drop-shadow(var(--neg) var(--neg) 0 var(--color));
+    filter: drop-shadow(var(--size) var(--size) 0 var(--color)) 
+    drop-shadow(var(--neg) var(--neg) 0 var(--color));
+
+}
+.desk_img:hover{
+    cursor:all-scroll;
+}
+
+/* Image Options */
+
+.image_container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+    padding-right: 30px;
+    /* background: red; */
+}
+
+.image_container:hover .image_options, .image_container:active .image_options{
+    transform: translateY(-50%);
+    filter: blur(0px);
+    opacity: 0.8;
+    pointer-events: all;
+
+}
+
+
+.image_options{
+    
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    opacity: 0;
+    transform: translate(20px, -50%);
+    filter: blur(2px);
+    transition: 0.6s;
+    pointer-events: none;
+    z-index: 200;
+
+}
+
+.image_option{
+    margin-bottom: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+} 
+
+.image_option:hover{
+    background: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.image_option:hover::after{
+  position: absolute;
+  width: 90px;
+  font-size: 12px;
+  text-align: center;
+  animation-name: fade-in;
+  transform: translateX(70px);
+  animation-duration: 0.3s;
+
+}
+
+@keyframes fade-in {
+  from{
+    transform: translateX(90px);
+  }
+  to{
+    transform: translateX(70px);
+  }
+}
+
+.image_option:nth-child(1):hover::after{
+    content: 'Remove Item';
+}
+.image_option:nth-child(2):hover::after{
+    content: 'Increase Size';
+}
+.image_option:nth-child(3):hover::after{
+    content: 'Decrease Size';
+}
+.image_option:nth-child(4):hover::after{
+    content: 'View Item';
+}
+.image_option:nth-child(5):hover::after{
+    content: 'Send to Back';
+}
+
+.sendBackImg{
+  width: 60%;
+  height: 60%;
+  filter: brightness(0%);
+  opacity: 0.6;
+}
+
+/* Save + Share Design Modal  */
+
+.modalBody canvas{
+    display: none;
+}
+
+#save .modalBody img, #share .modalBody img{
+    margin-inline: auto;
+    border: 30px solid white;
+    max-width: calc(100% - 60px);
+    max-height: 40vh;
+    box-shadow: 0px 0px 5px 5px rgba(40,105,69,0.1);
+    margin-top: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.modalBody .preview_text{
+    color: rgba(40,105,69,0.8);
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+/* Change Forest Background For Only Add Items Modal */
+#add{
+    background-position: center 48%;
+}
+
+
+/* Google Login In Section */
+
+#designs .modalBody{
+    max-height: 100vh - 300px;
+    max-height: calc((var(--vh, 1vh) * 100) - 230px);
+}
+
+.loggedIn{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    flex-direction: column;
+}
+
+.loggedIn .googleText{
+    font-size: 22px;
+    line-height: 1.6;
+    letter-spacing: 0.1mm;
+    margin-bottom: 40px;
+    color: rgba(0,0,0,0.9);
+    width: 80%;
+}
+
+.googleButton{
+    margin-bottom: 30px;
+}
+
+
+.loggedIn.hide , .notLogin.hide{
+    display: none;
+}
+
+/* Save Name nput */
+
+.saveName{
+    background: transparent;
+    width: 300px;
+    margin-inline: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    color: rgb(0,0,0,0.8);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(40,105,69,0.4);
+    opacity: 1; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(40,105,69,0.4);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(40,105,69,0.4);
+}
+
+
+/* Styles for Designs */
+.design{
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.design::after{
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background: rgba(0,0,0,0.3);
+    bottom: -15px;
+    left: 10%;
+}
+
+.designName{
+    width: calc(100% - 5px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    display: none;
+}
+
+.designContent{
+    width: calc(100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100px;
+}
+
+.designImage{
+
+}
+
+.designImage img{
+    max-height: 40vh;
+    max-width: calc(100% - 60px);
+}
+
+.designOptions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+.designOption{
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: rgb(0,0,0,0.5);
+}
+
+.designOption:hover{
+    color: rgb(40,105,69);
+    cursor: pointer;
+}
+
+.designOption.share{
+
+}
+
+.designOption.delete{
+
+}
+
+.productLinks{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.productLink{
+    width: auto;
+    height: auto;
+    float: left;
+    overflow: hidden;
+    /* background: rgba(255,255,255,0.8);
+    border: 1px solid rgba(0,0,0,0.2); */
+    margin-right: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    color: rgba(0,0,0,0.6);
+    font-size: 18px;
+    text-decoration: none;
+    padding: 5px;
+}
+@media (max-width: 800px) {
+    .productLinks{
+        flex-direction: column;
+        width: 90%;
+        margin-left: 5%;
+    }
+    .productLink{
+        margin: 10px auto;
+        width: 100%;
+        justify-content: flex-end;
+
+    }
+}
+.productLink:hover{
+    color: rgba(0,0,0,1);
+}
+
+.productLink img{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.productLink i{
+    display: inline-block;
+    font-size: 14px;
+    color: rgb(0,0,0,0.4);
+    margin-left: 10px;
+}
+
+/* Help Modal */
+
+.helpModalContent{
+    display: flex;
+    flex-direction: row;
+    width: 400%;
+    transition: 0.4s;
+}
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 25%;
+    position: relative;
+}
+.pageSubTitle{
+    color: rgb(0,0,0,0.7);
+}
+.pageText{
+    font-size: 18px;
+    color: rgb(0,0,0,0.6);
+}
+.deskIcon{
+    width: 150px;
+    margin: 50px 0;
+}
+.modalButtons.tutorial .modalButton{
+    height: 40px;
+    font-size: 18px;
+    padding-inline: 15px;
+}
+
+.modalButton.skip{
+    background: none;
+    color: rgb(0,0,0,0.8);
+}
+
+.modalButton.skip:hover{
+    color: black;
+}
+
+.sideFlex{
+    width: 90%;
+    margin-left: 5%;
+    gap: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: right;
+}
+
+.sideFlex.reverse{
+    flex-direction: row-reverse;
+    text-align: left;
+}
+
+.pageTitle.sub{
+    margin-bottom: 10px;
+    font-size: clamp(26px, 2.5vw, 33px);
+    margin-top: 10px;
+}
+
+.helpImg{
+    margin-top: 30px;
+    max-width: 90%;
+    max-height: 200px;
+    border: 1px solid rgb(255,255,255,0.8);
+}
+.helpModalBody{
+    margin-bottom: 100px;
+}
+.modalFooter{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.helpText{
+    color: rgb(0,0,0,0.6);
+    font-size: clamp(16px, 1.8vw, 20px);
+}
+
+
+#help{
+    max-height: 95vh;
+    overflow-y: scroll;
+} 
+
+#help::-webkit-scrollbar , .products .container::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+}
+
+
+#help::-webkit-scrollbar-track ,.products .container::-webkit-scrollbar-track{
+    background-color: rgb(0,0,0,0.1);        /* color of the tracking area */
+}
+
+#help::-webkit-scrollbar-thumb , .products .container::-webkit-scrollbar-thumb {
+    background-color: rgba(40,105,69,0.5);    /* color of the scroll thumb */  
+}
+
+#help .fade{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-10px);
+    transition: 0.6s;
+}
+
+#help .fade:nth-child(1){
+    transition-delay: 0.1s;
+}
+#help .fade:nth-child(2){
+    transition-delay: 0.2s;
+}
+#help .fade:nth-child(3){
+    transition-delay: 0.3s;
+}
+#help .fade:nth-child(4){
+    transition-delay: 0.4s;
+}
+
+#help .show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+}
+
+.helpModalBody .button{
+    flex-shrink: 0;
+}
+
+.circle{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgb(76, 146, 107,0.8);
+    color: white;
+}
+
+.helpButton{
+    position: fixed;
+    top: 230px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: rgb(40,105,69);
+    border: 2px solid rgba(40,105,69,0.1);
+    background: rgb(208,214,212);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    z-index: 400;
+    font-size: 23px;
+    font-family: 'Montserrat';
+
+}
+
+.helpButton:after{
+    content: 'Help';
+    position: absolute;
+    height: 100%;
+    top: 100%;
+    margin-top: 10px;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 0.2s;
+    transform: translateY(2px);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: rgb(40,105,69,0.8);
+}
+
+
+.helpButton:hover{
+    cursor: pointer;
+}
+
+.helpButton:hover:after{
+    opacity: 1;
+    transform: translate(0);
+
+}
+
+.helpButton.hidden{
+    display: none;
+}
+
+.helpButton.level{
+    z-index: 100;
+}
+
+@media (max-width: 820px) {
+    .helpButton{
+        top: 20px;
+    }
+}
+
+.menuContainer.hidden{
+    display: none;
+}
+
+.seperator{
+    background: rgba(0,0,0,0.0.5) !important
+}
+
+.categoryTag{
+    font-size: 17px;
+    color: rgba(0,0,0,0.4);
+    display: inline-block;
+    margin-left: 20px;
+}
+
+

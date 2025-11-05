@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Font Awsome Icons -->
+    <script src="https://kit.fontawesome.com/42eeaf32dd.js" crossorigin="anonymous"></script></head>
+
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="styles/home.css">
+
+    <!-- Link to intersection observers -->
+    <script defer src="scripts/observers.js"></script>
+
+</head>
+<body>
+    
+ <!-- Navigation -->
+ <div class="navStuff">
+        
+    <!-- Import Nav Styles -->
+    <link rel="stylesheet" href="../styles/nav.css">
+
+    <!-- Import Nav Scripts -->
+    <script defer src="scripts/nav.js"></script>
+
+
+    <!-- Menu Toggle Positioned Over Everything -->
+    <div class="menuContainer">
+        <div class="menu-toggle">
+
+            <!-- Menu Hamburger Icon -->
+            <div class="login base" > 
+                <div onclick = 'toggleNav()' id="nav-icon3">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav Slide In Content -->
+    <div class = 'navPlaceholder'>
+    <div class="content">
+        <div class="topMenu">
+            <div class="topMenuContainer">
+                <div class="logo">
+                    <img src="../images/logoRemoved.png" alt="">
+                </div>
+                <div class="line">
+                    <div class="line"></div>
+                </div>
+                <div class="socialMedia">
+                    <a target = '_blank' href= "https://hu.linkedin.com/company/outfit-of-tomorrow?trk=public_profile_topcard-current-company"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a target = '_blank' href ="https://www.instagram.com/outfit.of.tomorrow/?hl=hu"><i class="fa-brands fa-instagram"></i></a>
+                    <a target = '_blank' href= "https://www.facebook.com/outfitoftomorrow"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+                <div class="line" style = 'grid-column:4'>
+                    <div class="line"></div>
+                </div>
+                <div class="login" style = 'opacity: 0;'> 
+                <div id="nav-icon3" class = 'open'>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>  
+                </div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <div class="menu-items">
+                <a href="index.html" class="menu-item">Home </a>
+                <a href="categories.html" class="menu-item">Products</a>
+                <a href="designDesk.html" class="menu-item">Design Desk</a>
+                <a href="blog.html" class="menu-item">Blog</a>
+            </div>
+            <div class="menu-background-pattern"></div>
+            <div class="menu-background-image" ></div>
+        </div>
+
+        <div class="subMenu">
+            <a href = 'mailto:outfitoftomorrow@outlook.com' class="menu-item sub">CONTACT US</a>
+            <a href = 'privacyPolicy.html' class="menu-item sub">PRIVACY POLICY</a>
+            <a href = 'news.html' class = "menu-item sub">NEWS</a>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- Top bar with logo shown initially on each page -->
+    <div class="navContainer">
+        <div class="nav">
+            
+            <!-- Top bar background Image -->
+            <a href = 'index.html' class="logo base">
+                <img src="../images/logoRemoved.png" alt="">
+            </a>
+
+            <div class="socialMedia">
+                <a target = '_blank' href= "https://hu.linkedin.com/company/outfit-of-tomorrow?trk=public_profile_topcard-current-company"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a target = '_blank' href ="https://www.instagram.com/outfit.of.tomorrow/?hl=hu"><i class="fa-brands fa-instagram"></i></a>
+                <a target = '_blank' href= "https://www.facebook.com/outfitoftomorrow"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- Page Content -->
+
+    <div class="pageContent">
+        <div class="pageTitle">News</div>
+        <div class="seperator"></div>
+        <div class="no-text">Page Under Construction</div>
+    </div>
+
+
+</body>
+</html>

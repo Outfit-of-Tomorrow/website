@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Desk</title>
+
+    <!-- Font Awsome Icons -->
+    <script src="https://kit.fontawesome.com/42eeaf32dd.js" crossorigin="anonymous"></script></head>
+
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="styles/desk.css">
+
+    <!-- Import Google Log In -->
+    <script async defer src="https://accounts.google.com/gsi/client"></script>
+
+    <!-- Link to intersection observers -->
+    <script defer src="scripts/observers.js"></script>
+
+    <!-- Import JSON Web Token Decoder -->
+    <script src="scripts/jwt-decode.js"></script>  
+
+    <!-- Import Firebase Functions -->
+    <script src = 'scripts/firebaseDesignDesk.js' defer type="module"></script>
+
+    <!-- Import Script -->
+    <script defer src="scripts/desk.js"></script>
+
+    <!-- Import HTML to Image Converter -->
+    <script src = 'https://unpkg.com/html-to-image@1.9.0/dist/html-to-image.js'></script>
+    
+</head>
+
+<body>
+
+     <div class="modalCover active"></div>
+
+     <div class="helpButton hidden" onclick = "toggleModalId('help')">?</div>
+
+
+     <!-- Navigation -->
+     <div class="navStuff">
+        
+        <!-- Import Nav Styles -->
+        <link rel="stylesheet" href="../styles/nav.css">
+
+        <!-- Import Nav Scripts -->
+        <script defer src="scripts/nav.js"></script>
+    
+
+        <!-- Menu Toggle Positioned Over Everything -->
+        <div class="menuContainer hidden">
+            <div class="menu-toggle">
+
+                <!-- Menu Hamburger Icon -->
+                <div class="login base" > 
+                    <div onclick = 'toggleNav()' id="nav-icon3">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    
+        <!-- Nav Slide In Content -->
+        <div class = 'navPlaceholder'>
+        <div class="content">
+            <div class="topMenu">
+                <div class="topMenuContainer">
+                    <div class="logo">
+                        <img src="../images/logoRemoved.png" alt="">
+                    </div>
+                    <div class="line">
+                        <div class="line"></div>
+                    </div>
+                    <div class="socialMedia">
+                        <a href= "https://hu.linkedin.com/company/outfit-of-tomorrow?trk=public_profile_topcard-current-company"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href ="https://www.instagram.com/outfit.of.tomorrow/?hl=hu"><i class="fa-brands fa-instagram"></i></a>
+                        <a href= "https://www.facebook.com/outfitoftomorrow"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                    <div class="line" style = 'grid-column:4'>
+                        <div class="line"></div>
+                    </div>
+                    <!-- <div class="username">Morgan Daniel</div> -->
+                    <div class="login" style = 'opacity: 0;'> 
+                    <div id="nav-icon3" class = 'open'>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>  
+                    </div>
+                </div>
+            </div>
+    
+            <div class="menu">
+                <div class="menu-items">
+                    <a href="index.html" class="menu-item">Home </a>
+                    <a href="categories.html" class="menu-item">Products</a>
+                    <a href="designDesk.html" class="menu-item">Design Desk</a>
+                    <a href="blog.html" class="menu-item">Blog</a>
+                </div>
+                <div class="menu-background-pattern"></div>
+                <div class="menu-background-image" ></div>
+            </div>
+    
+            <div class="subMenu">
+                <a href = 'mailto:outfitoftomorrow@outlook.com' class="menu-item sub">CONTACT US</a>
+                <a href = 'privacyPolicy.html' class="menu-item sub">PRIVACY POLICY</a>
+                <!-- <a href = 'news.html' class="menu-item sub">NEWS</a> -->
+            </div>
+    
+        </div>
+        </div>
+    
+        <!-- Top bar with logo shown initially on each page -->
+        <div class="navContainer">
+            <div class="nav">
+                
+                <!-- Top bar background Image -->
+                <div class="logo base">
+                    <img src="../images/logoRemoved.png" alt="">
+                </div>
+
+                <div class="socialMedia">
+                    <a target = '_blank' href= "https://hu.linkedin.com/company/outfit-of-tomorrow?trk=public_profile_topcard-current-company"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a target = '_blank' href ="https://www.instagram.com/outfit.of.tomorrow/?hl=hu"><i class="fa-brands fa-instagram"></i></a>
+                    <a target = '_blank' href= "https://www.facebook.com/outfitoftomorrow"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+                
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- --- Modals --- -->
+
+     <!-- Help Modal -->
+     <div class="modal active" id = 'help'>
+        <div class="modalContent" style = "overflow: hidden;">
+            <div class="helpModalContent" >
+
+                <script>
+                    let helpContent = document.querySelector('.helpModalContent')
+                </script>
+
+                <div class="page">
+
+                    <div class="helpModalBody">
+                        <div class="pageTitle fade">Welcome to the Design Desk!</div>
+                        <div class="pageText fade ">This short tutorial will walk you through all the features of this application.</div>
+                        <img class = 'deskIcon fade' src="images/icons/desk.png" alt="">
+                        <div class="pageText fade ">You can access this tutorial anytime by clicking the <div class="circle">?</div> icon.</div>
+                    </div>
+
+                    <div class="modalFooter">
+                        <div class="seperator"></div>
+                        <div class="modalButtons tutorial">
+                            <div onclick = 'helpContent.style.transform = "translateX(-25%)"' class="modalButton fade">Next</div>
+                            <div onclick = 'toggleModalId("help")' class="modalButton skip fade">Skip Tutorial</div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="page">
+
+                    <div class="helpModalBody">
+                        <div class="pageTitle sub">Adding Clothing Items</div>
+                        <div class="seperator"></div>
+                        <div class="pageText"></div>
+                    
+                        <div class="sideFlex reverse">
+                            <div class="button fade" id = 'addItemButton' >
+                                <i class="fa-solid fa-plus"></i><span>Add Item</span>
+                            </div>
+                            <div class="helpText">Clothes can be added to the design desk using the following button</div>
+                        </div>
+
+                        <div class="seperator"></div>
+                        <div class="helpText" >Once added clothing items can be moved around by pressing on them and dragging. They can also be resized and deleted using the buttons shown below.</div>
+                        <img class = "helpImg" src="images/itemHelp.jpg" alt="">
+                    </div>
+
+                    <div class="modalFooter">
+                        <div class="seperator"></div>
+                        <div class="modalButtons tutorial">
+                            <div onclick = 'helpContent.style.transform = "translateX(-50%)"' class="modalButton">Next</div>
+                            <div onclick = 'helpContent.style.transform = "translateX(0%)"' class="modalButton">Previous</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="page">
+
+                    <div class="helpModalBody">
+                        <div class="pageTitle sub">Sharing your Design</div>
+                        <div class="seperator"></div>
+                    
+                        <div class="helpText">Once your design is complete, you can share an image capture of your design to any media platform using the following button.</div>
+
+                        <div  class="button fade" style = "margin: 40px auto">
+                            <i class="fa-solid fa-share"></i><span>Share</span>
+                        </div>
+
+                        <div class="helpText">You don't need to be logged in to share your design.</div>
+
+
+                    </div>
+
+                    <div class="modalFooter">
+                        <div class="seperator"></div>
+                        <div class="modalButtons tutorial">
+                            <div onclick = 'helpContent.style.transform = "translateX(-75%)"' class="modalButton">Next</div>
+                            <div onclick = 'helpContent.style.transform = "translateX(-25%)"' class="modalButton">Previous</div>
+    
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="page">
+
+                    <div class="helpModalBody">
+                        <div class="pageTitle sub">Saving Designs</div>
+                        <div class="seperator"></div>
+
+                        <div class="sideFlex reverse">
+                            <div  class="button fade">
+                                <i class="fa-solid fa-floppy-disk"></i><span>Save</span>
+                            </div>
+                            <div class="helpText">To keep your design for the next time you visit, just save it using the following button.</div>
+                        </div>
+
+                        <div class="seperator"></div>
+
+                        <div class="sideFlex">
+                            <div  class="button fade">
+                                <i class="fa-solid fa-pen-ruler"></i><span>My Designs</span>
+                            </div>
+                            <div class="helpText">Your previously saved designs can then be accessed using the this button.</div>
+                        </div>
+
+                        <div class="seperator"></div>
+
+                        <div class="pageText">Note: to save your designs you will need to log in with your google account.</div>
+                    
+                    </div>
+
+                    <div class="modalFooter">
+                        <div class="seperator"></div>
+                        <div class="modalButtons tutorial">
+                            <div onclick = 'toggleModalId("help")' class="modalButton">Finish</div>
+                            <div onclick = 'helpContent.style.transform = "translateX(-50%)"' class="modalButton">Previous</div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+     </div>
+
+     <!-- Add Items Modal -->
+     <div class="modal" id = 'add'>
+        <div title="Close" onclick="toggleModalId('add')" class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="modalContent">
+            <div class="modalTitle">Add Item</div>
+            <div class="seperator" style = 'margin-top: 20px; margin-bottom: 20px;'></div>
+
+            <div class="overflow_container">
+                <div class="product_modal">
+                
+                    <div class="categories">
+
+                    </div> 
+                    
+                    <div class="products">
+
+                        <div onclick = 'toggleCategory("")' class="topBar">
+                            <div class="currentProductTitle"></div>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+
+                        <div class="container">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+     </div>
+
+     <!-- Save Design Modal -->
+     <div class="modal" id = 'save'>
+        <div title="Close" onclick="toggleModalId('save')" class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="modalContent">
+            <div class="modalTitle">Save Design</div>
+            <div class="seperator"></div>
+            <div class="modalBody">
+
+                <div class="loggedIn">
+                    <div class="googleText">To save your design you must first login with google.</div>
+                    <div class="googleButton">Sorry Login Unavailable</div>
+                </div>
+
+                <div class="notLogin hide">
+                    <div class="loading"></div>
+                
+                    <canvas id = 'canvas' class = "canvas"></canvas>
+                </div>
+
+            </div>
+            <div class="seperator"></div>
+            <div class="modalButtons">
+                <div onclick = 'saveDesign()' class="modalButton hide">Save <i class="fa-solid fa-floppy-disk"></i> </div>
+            </div>
+        </div>
+     </div>
+
+     <!-- My Designs Modal -->
+     <div class="modal" id = 'designs'>
+        <div title="Close" onclick="toggleModalId('designs')" class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="modalContent">
+            <div class="modalTitle">My Designs</div>
+            <div class="seperator"></div>
+            <button id = 'loadDesigns' style = 'display: none'></button>
+            <div class="modalBody">
+
+                <div class="loggedIn">
+                    <div class="googleText">To view your designs you must first login with google.</div>
+                    <div class="googleButton"></div>
+                </div>
+
+                <div class="notLogin hide">
+                    Logged In
+                </div>
+
+            </div>
+        </div>
+     </div>
+
+     <!-- Share Modal -->
+     <div class="modal" id = 'share'>
+        <div title="Close" onclick="toggleModalId('share')" class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="modalContent">
+            <div class="modalTitle">Share Design</div>
+            <div class="seperator"></div>
+            <div class="modalBody"></div>
+            <div class="seperator"></div>
+            <div class="modalButtons">
+                <div onclick = 'shareImg()' class="modalButton">Share <i class="fa-solid fa-share"></i></div>
+                <div onclick = 'downloadImage("share")' class="modalButton download">Download <i class="fa-solid fa-download"></i></div>
+
+            </div>
+        </div>
+     </div>
+
+
+    <!-- Page Content -->
+
+    <div class="desk" id = 'desk'>
+
+        <div class="deskContent">
+            <div class="title" id = 'title'>Welcome to the Design Desk!</div>
+            <div class="description" style = 'width: 90%'>Just add an item to get started...</div>
+            <div onclick="toggleModalId('add')" class="add">Add first item <i style = 'color: rgb(40,105,69)' class="fa-solid fa-plus"></i></div>
+            
+
+            <div class="buttons">
+
+                <div onclick="toggleModalId('add')" class="button" id = 'addItemButton'>
+                    <i class="fa-solid fa-plus"></i><span>Add Item</span>
+                    
+                </div>
+
+                <div onclick="toggleModalId('share')" class="button">
+                    <i class="fa-solid fa-share"></i><span>Share</span>
+                </div>
+
+
+                <div onclick="toggleModalId('save')" class="button">
+                    <i class="fa-solid fa-floppy-disk"></i><span>Save</span>
+                </div>
+
+                <div onclick="toggleModalId('designs')" class="button">
+                    <i class="fa-solid fa-pen-ruler"></i><span>My Designs</span>
+                </div>
+
+            </div>
+
+            <div class="deskImages">
+            
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Template For Image Options -->
+    <div style = 'display: none' id="image_options_template">
+        <div class="image_options">
+            <div onclick = 'deleteItem(this)' class="image_option"><i class="fa-solid fa-x"></i></div>
+            <div onclick = 'increaseImage(this)' class="image_option"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            <div onclick = 'decreaseImage(this)' class="image_option"><i class="fa-solid fa-magnifying-glass-minus"></i></div>
+            <div onclick = 'viewImage(this)' class="image_option"><i class="fa-solid fa-eye"></i></div>
+            <div onclick = 'sendBack(this)' class="image_option"><img class = 'sendBackImg' src = './images/sendBack.png'></div>
+        </div>
+    </div>
+
+</body>
+</html>

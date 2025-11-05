@@ -1,0 +1,38 @@
+/* --- Styles for About Us + Privacy Policy pages --- */
+
+.aboutUs{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(0,0,0,0.8);
+    line-height: 140%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.aboutUs .title{
+    color: rgba(40,105,69,0.7);
+    margin-top: 70px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.aboutUs p{
+    margin-bottom: 110px;
+}
+
+.aboutUs .fade{
+    opacity: 0.4;
+    filter: blur(1px);
+    transform: translateY(-10px);
+    transition: 0.6s;
+}
+
+.aboutUs .fade.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+}
+
+.aboutUs a{
+    color: rgba(40,105,69,0.7);
+}
