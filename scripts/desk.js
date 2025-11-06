@@ -793,6 +793,9 @@ function getCookie(cname) {
     return "";
 }
 
+// Make getCookie available globally for use in other modules
+window.getCookie = getCookie;
+
 // Funtion To delete cookie from dom
 function delete_cookie( name, path, domain ) {
     if( getCookie( name ) ) {
