@@ -52,6 +52,9 @@ function toggleModalId(id){
     }
 }
 
+// Make functions available globally for inline event handlers
+window.toggleModalId = toggleModalId;
+
 // Set Up event listener so if user clicks off of modal it will close
 modalCover.addEventListener('click',() => {
     let modals = document.querySelectorAll('.modal');
@@ -237,6 +240,8 @@ function toggleCategory(id){
     
 }
 
+window.toggleCategory = toggleCategory;
+
 // Function For Adding Image To Desk
 function addImageDesk(src,name,url,price){
 
@@ -323,12 +328,16 @@ function deleteItem(elmnt){
     window.numberOfItems  = window.numberOfItems - 1
 }
 
+window.deleteItem = deleteItem;
+
 // Function To Increase Size Of Image
 function increaseImage(elmnt){
     var img = elmnt.parentElement.nextElementSibling;
     var newHeight = img.offsetHeight + 50;
     img.style.maxHeight = newHeight + 'px';
 }
+
+window.increaseImage = increaseImage;
 
 // Function To Decrease Size Of Image
 function decreaseImage(elmnt){
@@ -339,6 +348,8 @@ function decreaseImage(elmnt){
     }
 }
 
+window.decreaseImage = decreaseImage;
+
 // Send Image to back
 function sendBack(elmt){
     var imageContainer = elmt.parentElement.parentElement;
@@ -348,11 +359,15 @@ function sendBack(elmt){
     deskImages.prepend(imageContainer);
 }
 
+window.sendBack = sendBack;
+
 // Function to view product through url
 function viewImage(elmnt){
     var url = elmnt.parentElement.nextElementSibling.id;
     window.open(url, '_blank');
 }
+
+window.viewImage = viewImage;
 
 // Function For Making Element Draggable Mouse
 function dragElement(elmnt) {
@@ -491,6 +506,8 @@ function downloadImage(id){
 
 }
 
+window.downloadImage = downloadImage;
+
 // Function To Share Image
 async function shareImg(source){
 
@@ -528,6 +545,8 @@ async function shareImg(source){
 
     shareImage();
 }
+
+window.shareImg = shareImg;
 
 
 async function previewDesign(modal){
@@ -858,5 +877,7 @@ function saveDesign(){
 
     // Removed logging of sensitive data (email)
 }
+
+window.saveDesign = saveDesign;
 
 
