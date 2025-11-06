@@ -216,28 +216,43 @@ populateAddModal();
 // Function called when category is selected in add item modal
 function toggleCategory(id){
 
-    document.querySelector('.product_modal').classList.toggle('active')
-    if (document.querySelector('.product_modal').classList.contains('active')){
-        document.querySelector('.products').id = id
-        document.querySelector('.currentProductTitle').innerHTML = id.replaceAll('-', ' ')
-
-        let container = document.querySelector('.container');
-        let products = container.querySelectorAll('.product-img')
+    let productModal = document.querySelector('.product_modal');
+    let container = document.querySelector('.container');
+    let products = container.querySelectorAll('.product-img');
+    
+    // If id is empty (back button), hide the product view
+    if (id === "" || id === null) {
+        productModal.classList.remove('active');
+        document.querySelector('.products').id = null;
+        // Hide all products when going back
         products.forEach((product) => {
-            console.log(product.classList);
-
-            if (product.classList.contains(id)){
-                product.style.display = "";
-            }
-            else {
-                product.style.display = "none";
-            }
-        })
-    }
-    else {
-        document.querySelector('.products').id = null
+            product.style.display = "none";
+        });
+        return;
     }
     
+    // Otherwise, show the product view for the selected category
+    productModal.classList.add('active');
+    document.querySelector('.products').id = id;
+    document.querySelector('.currentProductTitle').innerHTML = id.replaceAll('-', ' ');
+
+    // Show products matching the category, hide others
+    let foundProducts = false;
+    products.forEach((product) => {
+        if (product.classList.contains(id)){
+            product.style.display = "block";
+            foundProducts = true;
+        }
+        else {
+            product.style.display = "none";
+        }
+    });
+    
+    // Debug: log if no products found
+    if (!foundProducts && products.length > 0) {
+        console.warn(`No products found for category: ${id}. Available classes:`, 
+            Array.from(products[0]?.classList || []));
+    }
 }
 
 window.toggleCategory = toggleCategory;
